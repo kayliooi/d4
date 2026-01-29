@@ -110,17 +110,14 @@ for i in range(len(config_file)):
     vec_file = read_vec_file("sqr.vec")
 
     dut_out = []
-    # golden_out = []
 
     for v in vec_file:
         dut_out.append(drive_and_capture("impl0", v))
-        # golden_out.append(drive_and_capture("golden", v))
 
     # 5. plot
     plt.figure(figsize=(10, 5))
     #plt.plot(vec_file, label="Input", drawstyle="steps-post")
     plt.plot(dut_out, label="DUT Output", drawstyle="steps-post")
-    # plt.plot(golden_out, label="Golden Output", drawstyle="steps-post", alpha=0.7)
     plt.title(f"FIR Filter Output Comparison (p{config_file[i]}.cfg)")
     plt.xlabel("Sample Index")
     plt.ylabel("Amplitude")
